@@ -1,7 +1,7 @@
 import React from 'react';
-import Dashboard from './components/Pages/Dashboard';
-import { Pricing } from './components/Pricing';
+import Dashboard from './pages/Dashboard';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { GoogleMap } from './pages/MapPage';
 
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/pricing' element={<Pricing />} />
+          <Route exact path='/' element={<Dashboard />} />
+          <Route exact path='/chargers' element={<GoogleMap />} />
 
         </Routes>
       </BrowserRouter>

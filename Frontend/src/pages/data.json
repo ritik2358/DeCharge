@@ -1,0 +1,40 @@
+{
+    "Operators": [
+        {
+            "name": "ABCD",
+            "contact": 123456789,
+            "address": "K.S. Layout",
+            "lat": "12.898773",
+            "lng": "77.576408",
+            "bookings": "9",
+            "ratings": 4.0
+        },
+        {
+            "name": "DEF",
+            "contact": 126856789,
+            "address": "Jayanagar",
+            "lat": "12.898773",
+            "lng": "77.676408",
+            "bookings": "3",
+            "ratings": 5.0
+        },
+        {
+            "name": "STCQ",
+            "contact": 7894561230,
+            "address": "RV Road",
+            "lat": "12.898773",
+            "lng": "77.776408",
+            "bookings": "5",
+            "ratings": 2.0
+        },
+        {
+            "name": "FGHI",
+            "contact": 125556789,
+            "address": "K.S. Layout",
+            "lat": "12.998773",
+            "lng": "77.576408",
+            "bookings": "9",
+            "ratings": 3.0
+        }
+    ]
+}

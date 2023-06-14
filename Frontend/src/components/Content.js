@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Content = () => {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -33,7 +35,11 @@ export const Content = () => {
               type="submit"
               className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-700 hover:bg-gray-900 focus:shadow-outline focus:outline-none"
             >
-              Chargers
+              <Link to="/chargers">
+                Chargers
+              </Link>
+
+
             </button>
             <button
               type="submit"

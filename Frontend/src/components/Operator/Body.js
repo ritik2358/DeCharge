@@ -63,10 +63,10 @@ function Body() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TableRow Name="ABC" Address={"KS Layout"} Price={"50/hr"} Description="Very Fast Charger" />
-                                    <TableRow Name="ABC" Address={"KS Layout"} Price={"50/hr"} Description="Very Fast Charger" />
-                                    <TableRow Name="ABC" Address={"KS Layout"} Price={"50/hr"} Description="Very Fast Charger" />
-                                    <TableRow Name="ABC" Address={"KS Layout"} Price={"50/hr"} Description="Very Fast Charger" />
+                                    <TableRow Name="Pariwar Presidency" Address={"Anugraha Layout, Ramanashree Enclave, Bilekahalli, Bengaluru"} Price={"48/hr"} Description="Very Fast Charger" />
+                                    <TableRow Name="PRESTIGE SOUTH RIDGE" Address={" Dattatreya Nagar, Hosakerehalli, Bengaluru"} Price={"69/hr"} Description="Very Fast Charger" />
+                                    <TableRow Name="SNN RAJ SENIRITY" Address={"Suraksha nagar, Yelenahalli, Akshayanagar, Bengaluru"} Price={"80/hr"} Description="Very Fast Charger" />
+                                    <TableRow Name="Evolve Work Studio" Address={"Doddanakundi Industrial Area 2, EPIP Zone, Whitefield, Bengaluru"} Price={"99/hr"} Description="Very Fast Charger" />
 
                                 </tbody>
                             </table>

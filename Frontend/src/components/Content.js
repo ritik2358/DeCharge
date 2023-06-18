@@ -3,7 +3,7 @@ import img1 from "../images/ev1.jpg"
 
 export const Content = () => {
   return (
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div className="px-4 py-0 mx-0 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10">
       <div className="flex flex-col max-w-screen-lg overflow-hidden bg-white border rounded shadow-sm lg:flex-row sm:mx-auto">
         <div className="relative lg:w-1/2">
           <img
@@ -31,7 +31,7 @@ export const Content = () => {
           <div className="flex items-center">
             <button
               type="submit"
-              className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-700 hover:bg-gray-900 focus:shadow-outline focus:outline-none"
+              className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-700 hover:bg-white hover:text-green-600 hover:border-4 border-green-600 focus:shadow-outline focus:outline-none"
             >
               <Link to="/chargers">
                 Chargers
@@ -41,7 +41,7 @@ export const Content = () => {
             </button>
             <button
               type="submit"
-              className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-700 hover:bg-gray-900 focus:shadow-outline focus:outline-none"
+              className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-700 hover:bg-white hover:text-green-600 hover:border-4 border-green-600 focus:shadow-outline focus:outline-none"
             >
               <Link to="/owner">
                 Owner
@@ -167,7 +167,7 @@ export const Content = () => {
       </div>
 
       <div className="relative flex flex-col-reverse py-10 pb-0 lg:py-0 lg:flex-col">
-        <div className="w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:py-20 lg:max-w-screen-xl">
+        <div className="w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:py-10 lg:max-w-screen-xl">
           <div className="mb-0 lg:max-w-lg lg:pr-8 xl:pr-6">
             <h2 className="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none md:text-center">
               EV Charging, Simplified

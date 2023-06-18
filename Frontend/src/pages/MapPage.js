@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Card } from "../components/Card";
 import { Map } from "../components/map/Map";
 import datas from './data.json'
+import { Nav } from "../components/Nav";
+import { Footer } from "../components/Footer";
 // import { Link } from "react-router-dom";
 
 export function GoogleMap() {
@@ -34,6 +36,9 @@ export function GoogleMap() {
 
 
     return (<>
+        <div>
+            <Nav />
+        </div>
         <section className="text-gray-600 body-font relative ">
             <div className="container px-5 py-5 mx-auto flex sm:flex-nowrap flex-wrap ">
                 <div className="lg:w-2/3 md:w-1/2  bg-gray-300 rounded-lg overflow-hidden sm:mr-10 relative h-screen w-full md:mt-20">
@@ -77,6 +82,9 @@ export function GoogleMap() {
                 </div>
             </div>
         </section>
+        <div>
+            <Footer />
+        </div>
     </>
     );
 }

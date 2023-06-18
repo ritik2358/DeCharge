@@ -1,40 +1,44 @@
 {
     "Operators": [
         {
-            "name": "ABCD",
+            "name": "Pariwar Presidency",
             "contact": 123456789,
-            "address": "K.S. Layout",
+            "address": "Anugraha Layout, Ramanashree Enclave, Bilekahalli, Bengaluru",
             "lat": "12.898773",
             "lng": "77.576408",
             "bookings": "9",
-            "ratings": 4.0
+            "ratings": 4.0,
+            "price": "48/hr"
         },
         {
-            "name": "DEF",
+            "name": "PRESTIGE SOUTH RIDGE",
             "contact": 126856789,
             "address": "Jayanagar",
             "lat": "12.898773",
             "lng": "77.676408",
             "bookings": "3",
-            "ratings": 5.0
+            "ratings": 5.0,
+            "price": "69/hr"
         },
         {
-            "name": "STCQ",
+            "name": "SNN RAJ SENIRITY",
             "contact": 7894561230,
-            "address": "RV Road",
+            "address": "Suraksha nagar, Yelenahalli, Akshayanagar, Bengaluru",
             "lat": "12.898773",
             "lng": "77.776408",
             "bookings": "5",
-            "ratings": 2.0
+            "ratings": 2.0,
+            "price": "80/hr"
         },
         {
-            "name": "FGHI",
+            "name": "Evolve Work Studio",
             "contact": 125556789,
-            "address": "K.S. Layout",
+            "address": "Doddanakundi Industrial Area 2, EPIP Zone, Whitefield, Bengaluru",
             "lat": "12.998773",
             "lng": "77.576408",
             "bookings": "9",
-            "ratings": 3.0
+            "ratings": 3.0,
+            "price": "99/hr"
         }
     ]
 }

@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import { Card } from "../components/Card";
 import { Map } from "../components/map/Map";
 import datas from './data.json'
-
-
+// import { Link } from "react-router-dom";
 
 export function GoogleMap() {
 
@@ -46,10 +45,10 @@ export function GoogleMap() {
                 </div>
                 <div className="lg:w-1/3 md:w-1/2 sm:w-full bg-white flex flex-col md:ml-auto md:py-8 mt-8 md:mt-0">
                     <div className="relative mb-4">
-                        <h1 className="text-slate-900 font-semibold uppercase text-2xl">Operators</h1>
+                        <h1 className="text-slate-900 font-semibold uppercase text-2xl">Chargers</h1>
                     </div>
                     <div className="relative mb-4">
-                        <h1 className="text-slate-600 font-semibold text">List of operators near you</h1>
+                        <h1 className="text-slate-600 font-semibold text">List of charger near you</h1>
                     </div>
                     <div className="relative mb-4">
                         <form class="w-full max-w-lg">
@@ -68,7 +67,9 @@ export function GoogleMap() {
                         {
                             data.map((marker, i) =>
                                 <div className="relative mb-4 flex flex-grow" id={i}>
-                                    <Card Name={marker.name} Contact={marker.contact} Address={marker.address} />
+
+                                    <Card Name={marker.name} Price={marker.price} Address={marker.address} />
+
                                 </div>
                             )}
 

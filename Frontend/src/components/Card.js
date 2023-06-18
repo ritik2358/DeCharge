@@ -1,9 +1,11 @@
-export function Card({ Name, Address, Contact }) {
+import { Link } from "react-router-dom";
+import im2 from "../images/ev1.jpg"
+export function Card({ Name, Address, Price }) {
     return (
         <>
 
             <div className="min-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg w-full">
-                <img className="object-cover object-center w-full h-40" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="avatar" />
+                <img className="object-cover object-center w-full h-40" src={im2} alt="avatar" />
 
 
                 <div className="px-6 py-4">
@@ -29,10 +31,21 @@ export function Card({ Name, Address, Contact }) {
 
                     <div className="flex items-center mt-4 text-gray-70">
                         <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3ZM12 19.2C8.26766 19.2 5.2 16.1323 5.2 12C5.2 7.86768 8.26766 4.8 12 4.8C15.7323 4.8 18.8 7.86768 18.8 12C18.8 16.1323 15.7323 19.2 12 19.2ZM12 7.2C9.52283 7.2 7.6 9.12283 7.6 11.6C7.6 14.0772 9.52283 16 12 16C14.4772 16 16.4 14.0772 16.4 11.6C16.4 9.12283 14.4772 7.2 12 7.2ZM11 13.2H10V14.4H11V13.2ZM13 13.2H12V14.4H13V13.2ZM13 10.2H11V12.6H13V10.2Z" />
                         </svg>
 
-                        <h1 className="px-2 text-sm">{Contact}</h1>
+                        <h1 className="px-2 text-sm">{Price}</h1>
+                    </div>
+
+                    <div className="float-right pb-9">
+                        <button type="submit"
+                            className="inline-flex items-center justify-right h-12 px-3 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-700 hover:bg-green-400 focus:shadow-outline focus:outline-none"
+                        >
+                            <Link to="/">
+                                Book Now
+                            </Link>
+
+                        </button>
                     </div>
                 </div>
             </div>

@@ -4,8 +4,8 @@
             "name": "Pariwar Presidency",
             "contact": 123456789,
             "address": "Anugraha Layout, Ramanashree Enclave, Bilekahalli, Bengaluru",
-            "lat": "12.898773",
-            "lng": "77.576408",
+            "lat": "12.8988948",
+            "lng": "77.6053396",
             "bookings": "9",
             "ratings": 4.0,
             "price": "48/hr"
@@ -14,8 +14,8 @@
             "name": "PRESTIGE SOUTH RIDGE",
             "contact": 126856789,
             "address": "Dattatreya Nagar, Hosakerehalli, Bengaluru",
-            "lat": "12.898773",
-            "lng": "77.676408",
+            "lat": "12.9277793",
+            "lng": "77.5348427",
             "bookings": "3",
             "ratings": 5.0,
             "price": "69/hr"
@@ -24,8 +24,8 @@
             "name": "SNN RAJ SENIRITY",
             "contact": 7894561230,
             "address": "Suraksha nagar, Yelenahalli, Akshayanagar, Bengaluru",
-            "lat": "12.898773",
-            "lng": "77.776408",
+            "lat": "12.8627082",
+            "lng": "77.6072092",
             "bookings": "5",
             "ratings": 2.0,
             "price": "80/hr"
@@ -34,8 +34,8 @@
             "name": "Evolve Work Studio",
             "contact": 125556789,
             "address": "Doddanakundi Industrial Area 2, EPIP Zone, Whitefield, Bengaluru",
-            "lat": "12.998773",
-            "lng": "77.576408",
+            "lat": "12.9792257",
+            "lng": "77.6997348",
             "bookings": "9",
             "ratings": 3.0,
             "price": "99/hr"

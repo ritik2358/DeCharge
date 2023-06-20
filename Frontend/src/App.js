@@ -14,13 +14,9 @@ function App() {
           <Route exact path='/' element={<Dashboard />} />
           <Route exact path='/chargers' element={<GoogleMap />} />
           <Route exact path='/owner' element={<OperatorDashboard />} />
-          <Route exact path='/addcharger' element={<NewCharger />} />
-
-
+          <Route exact path='/add' element={<NewCharger />} />
         </Routes>
       </BrowserRouter>
-
-
     </>
   );
 }

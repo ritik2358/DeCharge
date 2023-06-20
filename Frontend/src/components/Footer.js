@@ -94,14 +94,13 @@ export const Footer = () => {
                         </a>
                     </div>
                     <p className="mt-4 text-sm text-white">
-                        Bacon ipsum dolor amet short ribs pig sausage prosciutto chicken
-                        spare ribs salami.
+                        A community-driven approach where individuals and businesses set up their own charging stations, creating a decentralized network for electric vehicle charging
                     </p>
                 </div>
             </div>
             <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
                 <p className="text-sm text-white">
-                    © Copyright 2020 Lorem Inc. All rights reserved.
+                    © Copyright 2023 Decharge Inc. All rights reserved.
                 </p>
                 <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
                     <li>

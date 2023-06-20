@@ -9,7 +9,8 @@ contract ChargerManager {
     string description;
   }
 
-  Charger[] public chargers;
+  mapping(uint256 => Charger) public chargers;
+  uint256 public chargerCount;
 
   function addCharger(
     string memory name,
@@ -17,17 +18,16 @@ contract ChargerManager {
     uint256 price,
     string memory description
   ) public {
-    Charger memory newCharger = Charger(name, location, price, description);
-    chargers.push(newCharger);
+    uint256 id = chargerCount;
+    chargers[id] = Charger(name, location, price, description);
+    chargerCount++;
   }
 
   function getChargerCount() public view returns (uint256) {
-    return chargers.length;
+    return chargerCount;
   }
 
-  function getChargerDetails() public view returns (
-    Charger[] memory allChargers
-  ) {
-    return chargers;
+  function getChargerDetails(uint256 id) public view returns (Charger memory) {
+    return chargers[id];
   }
 }

@@ -1,20 +1,23 @@
 
 import { useState, useEffect } from "react";
 import { Card } from "../components/Card";
-import { Map } from "../components/map/Map";
-import datas from './data.json'
+import { GogMap } from "../components/map/GogMap";
+//import datas from './data.json'
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 // import { Link } from "react-router-dom";
+import { ethers } from 'ethers';
+import abi from '../contractJSON/ChargerManager.json';
+
 
 export function GoogleMap() {
 
     // const { t } = useTranslation();
+    const [data, setData] = useState([]);
 
     const [coordinates, setCoordinates] = useState({});
 
     const [click, setClick] = useState(1);
-    const data = datas.Operators;
 
 
     useEffect(() => {
@@ -23,16 +26,49 @@ export function GoogleMap() {
         })
     }, []);
 
+    
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    useEffect(() => {
-        console.log(click);
-        const k = document.getElementById(click);
-        console.log(k);
-        const s = document.getElementById('scroll');
-        s.scrollTop = k.offsetTop - 250;
-        // console.log(s);
-
-    }, [click])
+  const fetchData = async () => {
+    try {
+      // Connect to the local Hardhat node
+      const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
+  
+      // Set the contract address and ABI
+      const contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
+      const contractABI = abi.abi;
+  
+      // Create a contract instance
+      const contract = new ethers.Contract(contractAddress, contractABI, provider);
+  
+      // Call the contract's function to retrieve the charger count
+      const count = await contract.getChargerCount();
+  
+      // Retrieve charger details for each charger
+      const chargers = [];
+      for (let i = 0; i < count.toNumber(); i++) {
+        const charger = await contract.getChargerDetails(i);
+        chargers.push(charger);
+      }
+  
+      // Update the state with the retrieved data
+      setData(chargers);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  useEffect(() => {
+    console.log(click);
+    const k = document.getElementById(click);
+    const s = document.getElementById('scroll');
+    
+    if (k && s) {
+      s.scrollTop = k.offsetTop - 250;
+    }
+  }, [click]);
+  
 
 
     return (<>
@@ -42,10 +78,9 @@ export function GoogleMap() {
         <section className="text-gray-600 body-font relative ">
             <div className="container px-5 py-5 mx-auto flex sm:flex-nowrap flex-wrap ">
                 <div className="lg:w-2/3 md:w-1/2  bg-gray-300 rounded-lg overflow-hidden sm:mr-10 relative h-screen w-full md:mt-20">
-                    <Map
-                        coordinates={coordinates}
-                        data={data}
-                        setClick={setClick}
+                    <GogMap
+                     coordinates={coordinates}
+                     setClick={setClick}
                     />
                 </div>
                 <div className="lg:w-1/3 md:w-1/2 sm:w-full bg-white flex flex-col md:ml-auto md:py-8 mt-8 md:mt-0">
@@ -69,12 +104,9 @@ export function GoogleMap() {
                         </form>
                     </div>
                     <div className=" flex flex-col overflow-y-scroll scroll-smooth max-h-screen" id="scroll">
-                        {
-                            data.map((marker, i) =>
-                                <div className="relative mb-4 flex flex-grow" id={i}>
-
-                                    <Card Name={marker.name} Price={marker.price} Address={marker.address} />
-
+                        {data.map((charger, index) =>
+                                <div className="relative mb-4 flex flex-grow" id={index}>
+                                    <Card Name={charger.name} Location={charger.location} Price={charger.price.toNumber()}  Description={charger.description}/>
                                 </div>
                             )}
 

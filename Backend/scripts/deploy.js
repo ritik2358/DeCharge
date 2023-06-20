@@ -5,11 +5,11 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
-  const ChargerManager = await ethers.getContractFactory("ChargerManager");
-  const chargerManager = await ChargerManager.deploy();
+  const ChargingBooking = await ethers.getContractFactory("ChargingBooking");
+  const chargingBooking = await ChargingBooking.deploy();
 
-  const address = await chargerManager.getAddress();
-  console.log("ChargerManager contract address:", address);
+  const address = await chargingBooking.getAddress();
+  console.log("ChargingBooking contract address:", address);
 }
 
 main()

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card } from "../components/Card";
 import { GogMap } from "../components/map/GogMap";
@@ -6,27 +5,27 @@ import { GogMap } from "../components/map/GogMap";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 // import { Link } from "react-router-dom";
-import { ethers } from 'ethers';
-import abi from '../contractJSON/ChargerManager.json';
+import { ethers } from "ethers";
+import abinew from "../contractJSON/ChargingBooking.json"
+import abi from "../contractJSON/ChargerManager.json";
 
 
 export function GoogleMap() {
+  // const { t } = useTranslation();
+  const [data, setData] = useState([]);
 
-    // const { t } = useTranslation();
-    const [data, setData] = useState([]);
+  const [coordinates, setCoordinates] = useState({});
 
-    const [coordinates, setCoordinates] = useState({});
+  const [click, setClick] = useState(1);
 
-    const [click, setClick] = useState(1);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({ lat: latitude, lng: longitude });
+      }
+    );
+  }, []);
 
-
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-            setCoordinates({ lat: latitude, lng: longitude })
-        })
-    }, []);
-
-    
   useEffect(() => {
     fetchData();
   }, []);
@@ -34,89 +33,161 @@ export function GoogleMap() {
   const fetchData = async () => {
     try {
       // Connect to the local Hardhat node
-      const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
-  
+      const provider = new ethers.providers.JsonRpcProvider(
+        "http://localhost:8545"
+      );
+
       // Set the contract address and ABI
-      const contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
+      const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
       const contractABI = abi.abi;
-  
+
       // Create a contract instance
-      const contract = new ethers.Contract(contractAddress, contractABI, provider);
-  
+      const contract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        provider
+      );
+
       // Call the contract's function to retrieve the charger count
       const count = await contract.getChargerCount();
-  
+
       // Retrieve charger details for each charger
       const chargers = [];
       for (let i = 0; i < count.toNumber(); i++) {
         const charger = await contract.getChargerDetails(i);
         chargers.push(charger);
       }
-  
+
       // Update the state with the retrieved data
       setData(chargers);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
     console.log(click);
     const k = document.getElementById(click);
-    const s = document.getElementById('scroll');
-    
+    const s = document.getElementById("scroll");
+
     if (k && s) {
       s.scrollTop = k.offsetTop - 250;
     }
   }, [click]);
-  
 
+  const handleBookNowClick = () => {
+    console.log('Booking successful!');
 
-    return (<>
-        <div>
-            <Nav />
-        </div>
-        <section className="text-gray-600 body-font relative ">
-            <div className="container px-5 py-5 mx-auto flex sm:flex-nowrap flex-wrap ">
-                <div className="lg:w-2/3 md:w-1/2  bg-gray-300 rounded-lg overflow-hidden sm:mr-10 relative h-screen w-full md:mt-20">
-                    <GogMap
-                     coordinates={coordinates}
-                     setClick={setClick}
-                    />
-                </div>
-                <div className="lg:w-1/3 md:w-1/2 sm:w-full bg-white flex flex-col md:ml-auto md:py-8 mt-8 md:mt-0">
-                    <div className="relative mb-4">
-                        <h1 className="text-slate-900 font-semibold uppercase text-2xl">Chargers</h1>
-                    </div>
-                    <div className="relative mb-4">
-                        <h1 className="text-slate-600 font-semibold text">List of charger near you</h1>
-                    </div>
-                    <div className="relative mb-4">
-                        <form class="w-full max-w-lg">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Name
-                            </label>
-                            <div className="flex items-center border-b hover:border-amber-600 group-focus:border-amber-600 py-2">
-                                <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Someone" aria-label="Full name" required />
-                                <button class="flex-shrink-0 bg-amber-600 hover:bg-amber-700 border-amber-600 hover:border-amber-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
-                                    Search
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div className=" flex flex-col overflow-y-scroll scroll-smooth max-h-screen" id="scroll">
-                        {data.map((charger, index) =>
-                                <div className="relative mb-4 flex flex-grow" id={index}>
-                                    <Card Name={charger.name} Location={charger.location} Price={charger.price.toNumber()}  Description={charger.description}/>
-                                </div>
-                            )}
+  };
 
-                    </div>
-                </div>
+  const handleConfirmBooking = async (startTime, endTime, OwnerAddress, chargerAddress, amount) => {
+     // Connect to the local Hardhat node
+     const provider = new ethers.providers.JsonRpcProvider(
+        "http://localhost:8545"
+      );
+
+      // Set the contract address and ABI
+      const contractAddressNew = "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82";
+      const contractABInew = abinew.abi;
+          // Check if MetaMask is connected
+    if (!window.ethereum || !window.ethereum.selectedAddress) {
+      throw new Error('Please connect to MetaMask.');
+    }
+
+    // Get the connected signer
+    const signer = provider.getSigner();
+    const ChargerOwner =  window.ethereum.selectedAddress;    ;
+      // Connect to the contract using the signer and contract address
+    const contractNew = new ethers.Contract(contractAddressNew, contractABInew, signer);
+    try{ 
+        
+    // Convert the start and end times to Unix timestamps (in seconds)
+    const startTimeUnix = Math.floor(new Date(startTime).getTime() / 1000);
+    const endTimeUnix = Math.floor(new Date(endTime).getTime() / 1000);
+
+     // Call the 'startBooking' function in the smart contract
+ await contractNew.startBooking(
+    ChargerOwner,
+    amount,
+    startTimeUnix,
+    endTimeUnix
+  );
+        
+
+    // Booking successful
+    console.log('Booking successful!');
+
+    alert("Booking is done successfuly!!!");
+      }catch (error) {
+    console.error('Error confirming booking:', error);
+  }
+  };
+
+  return (
+    <>
+      <div>
+        <Nav />
+      </div>
+      <section className="text-gray-600 body-font relative ">
+        <div className="container px-5 py-5 mx-auto flex sm:flex-nowrap flex-wrap ">
+          <div className="lg:w-2/3 md:w-1/2  bg-gray-300 rounded-lg overflow-hidden sm:mr-10 relative h-screen w-full md:mt-20">
+            <GogMap coordinates={coordinates} data={data} setClick={setClick} />
+          </div>
+          <div className="lg:w-1/3 md:w-1/2 sm:w-full bg-white flex flex-col md:ml-auto md:py-8 mt-8 md:mt-0">
+            <div className="relative mb-4">
+              <h1 className="text-slate-900 font-semibold uppercase text-2xl">
+                Chargers
+              </h1>
             </div>
-        </section>
-        <div>
-            <Footer />
+            <div className="relative mb-4">
+              <h1 className="text-slate-600 font-semibold text">
+                List of charger near you
+              </h1>
+            </div>
+            <div className="relative mb-4">
+              <form class="w-full max-w-lg">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Name
+                </label>
+                <div className="flex items-center border-b hover:border-amber-600 group-focus:border-amber-600 py-2">
+                  <input
+                    class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                    type="text"
+                    placeholder="Someone"
+                    aria-label="Full name"
+                    required
+                  />
+                  <button
+                    class="flex-shrink-0 bg-amber-600 hover:bg-amber-700 border-amber-600 hover:border-amber-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    type="submit"
+                  >
+                    Search
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div
+              className=" flex flex-col overflow-y-scroll scroll-smooth max-h-screen"
+              id="scroll"
+            >
+              {data.map((charger, index) => (
+                <div className="relative mb-4 flex flex-grow" id={index}>
+                  <Card
+                    Name={charger.name}
+                    Location={charger.location}
+                    Price={charger.price.toNumber()}
+                    Description={charger.description}
+                    onBookNowClick={handleBookNowClick}
+                    onConfirmBooking={handleConfirmBooking}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+      </section>
+      <div>
+        <Footer />
+      </div>
     </>
-    );
+  );
 }

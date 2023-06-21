@@ -55,7 +55,7 @@ const ChargerPage = () => {
       window.alert('New charger has been added!');
 
       // Redirect the page
-      window.location.href = '../../owner';
+      window.location.href = '../../chargers';
     } catch (error) {
       // Error occurred while submitting form data
       console.error('Error submitting form data:', error);

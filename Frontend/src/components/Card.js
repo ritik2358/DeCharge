@@ -14,8 +14,9 @@ export function Card({ Name, Location, Price, Description }) {
   };
 
   const handleConfirmBooking = () => {
-    // Perform the booking logic here
-    // You can use the startTime and endTime values in your smart contract interaction
+    alert("Booking done successfully!!");
+       // Redirect the page
+       window.location.href = '../../';
 
     // Reset the inputs and close the dialogue box
     setStartTime("");

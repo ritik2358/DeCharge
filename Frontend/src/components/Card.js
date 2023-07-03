@@ -16,7 +16,7 @@ export function Card({ Name, Location, Price, Description }) {
   const handleConfirmBooking = () => {
     alert("Booking done successfully!!");
        // Redirect the page
-       window.location.href = '../../';
+       window.location.href = '../../owner';
 
     // Reset the inputs and close the dialogue box
     setStartTime("");

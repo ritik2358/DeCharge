@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
 
-contract ChargingBooking {
+contract Booking {
     uint256 transactionCount;
 
     event Transfer(address from, address ChargerOwner, uint amount, uint256 startTime, uint256 endTime);

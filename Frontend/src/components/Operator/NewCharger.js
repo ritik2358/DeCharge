@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import './NewCharger.css';
 import abi from '../../contractJSON/ChargerManager.json';
+import { Nav } from '../Nav';
 
 const ChargerPage = () => {
   const [formData, setFormData] = useState({
@@ -64,6 +65,10 @@ const ChargerPage = () => {
   };
 
   return (
+    <>
+    <div>
+          <Nav />
+        </div> 
     <div className="form-container">
       <h2 className="form-title">Add a New Charger</h2>
       <form onSubmit={handleSubmit}>
@@ -116,6 +121,7 @@ const ChargerPage = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

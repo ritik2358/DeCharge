@@ -6,7 +6,7 @@ import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 // import { Link } from "react-router-dom";
 import { ethers } from "ethers";
-import abinew from "../contractJSON/ChargingBooking.json"
+import abinew from "../contractJSON/Booking.json"
 import abi from "../contractJSON/ChargerManager.json";
 
 
@@ -86,7 +86,7 @@ export function GoogleMap() {
       );
 
       // Set the contract address and ABI
-      const contractAddressNew = "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82";
+      const contractAddressNew = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
       const contractABInew = abinew.abi;
           // Check if MetaMask is connected
     if (!window.ethereum || !window.ethereum.selectedAddress) {
@@ -125,8 +125,8 @@ export function GoogleMap() {
   return (
     <>
       <div>
-        <Nav />
-      </div>
+          <Nav />
+        </div>
       <section className="text-gray-600 body-font relative ">
         <div className="container px-5 py-5 mx-auto flex sm:flex-nowrap flex-wrap ">
           <div className="lg:w-2/3 md:w-1/2  bg-gray-300 rounded-lg overflow-hidden sm:mr-10 relative h-screen w-full md:mt-20">

@@ -43,8 +43,8 @@ export const Content = () => {
               type="submit"
               className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-700 hover:bg-white hover:text-green-600 hover:border-4 border-green-600 focus:shadow-outline focus:outline-none"
             >
-              <Link to="/owner">
-                Owner
+              <Link to="/addcharger">
+                New Charger
               </Link>
 
             </button>

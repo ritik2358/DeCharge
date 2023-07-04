@@ -74,54 +74,12 @@ export function GoogleMap() {
     }
   }, [click]);
 
-  const handleBookNowClick = () => {
+  const bookNow = () => {
     console.log('Booking successful!');
 
   };
 
-  const handleConfirmBooking = async (startTime, endTime, OwnerAddress, chargerAddress, amount) => {
-     // Connect to the local Hardhat node
-     const provider = new ethers.providers.JsonRpcProvider(
-        "http://localhost:8545"
-      );
-
-      // Set the contract address and ABI
-      const contractAddressNew = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
-      const contractABInew = abinew.abi;
-          // Check if MetaMask is connected
-    if (!window.ethereum || !window.ethereum.selectedAddress) {
-      throw new Error('Please connect to MetaMask.');
-    }
-
-    // Get the connected signer
-    const signer = provider.getSigner();
-    const ChargerOwner =  window.ethereum.selectedAddress;    ;
-      // Connect to the contract using the signer and contract address
-    const contractNew = new ethers.Contract(contractAddressNew, contractABInew, signer);
-    try{ 
-        
-    // Convert the start and end times to Unix timestamps (in seconds)
-    const startTimeUnix = Math.floor(new Date(startTime).getTime() / 1000);
-    const endTimeUnix = Math.floor(new Date(endTime).getTime() / 1000);
-
-     // Call the 'startBooking' function in the smart contract
- await contractNew.startBooking(
-    ChargerOwner,
-    amount,
-    startTimeUnix,
-    endTimeUnix
-  );
-        
-
-    // Booking successful
-    console.log('Booking successful!');
-
-    alert("Booking is done successfuly!!!");
-      }catch (error) {
-    console.error('Error confirming booking:', error);
-  }
-  };
-
+ 
   return (
     <>
       <div>
@@ -176,8 +134,8 @@ export function GoogleMap() {
                     Location={charger.location}
                     Price={charger.price.toNumber()}
                     Description={charger.description}
-                    onBookNowClick={handleBookNowClick}
-                    onConfirmBooking={handleConfirmBooking}
+                    handleBookNowClick={bookNow}
+                    
                   />
                 </div>
               ))}

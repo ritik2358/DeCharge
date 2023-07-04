@@ -4,25 +4,11 @@ import im2 from "../images/ev1.jpg";
 //import { ethers } from 'ethers';
 //import abi2 from '../contractJSON/ChargingBooking.json';
 
-export function Card({ Name, Location, Price, Description }) {
+export function Card({ Name, Location, Price, Description , handleBookNowClick}) {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [showDialog, setShowDialog] = useState(false);
 
-  const handleBookNowClick = () => {
-    setShowDialog(true);
-  };
-
-  const handleConfirmBooking = () => {
-    alert("Booking done successfully!!");
-       // Redirect the page
-       window.location.href = '../../owner';
-
-    // Reset the inputs and close the dialogue box
-    setStartTime("");
-    setEndTime("");
-    setShowDialog(false);
-  };
 
   return (
     <>
@@ -64,7 +50,35 @@ export function Card({ Name, Location, Price, Description }) {
             <h1 className="px-2 text-sm text-green-600">{Price}</h1>
           </div>
 
-          <div className="float-right pb-9">
+           {/* Add start time input */}
+           <div className="mt-4">
+            <label htmlFor="startTime" className="block text-sm font-medium text-gray-700">
+              Start Time
+            </label>
+            <input
+              type="time"
+              id="startTime"
+              className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+            />
+          </div>
+          
+          {/* Add end time input */}
+          <div className="mt-4">
+            <label htmlFor="endTime" className="block text-sm font-medium text-gray-700">
+              End Time
+            </label>
+            <input
+              type="time"
+              id="endTime"
+              className="mt-1 focus:ring-green-500 focus:border-green-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+            />
+          </div>
+          
+          <div className="float-right pb-9 my-4">
             <button
               type="button"
               className="inline-flex items-center justify-right h-12 px-3 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-700 hover:bg-green-400 focus:shadow-outline focus:outline-none"
@@ -76,38 +90,7 @@ export function Card({ Name, Location, Price, Description }) {
         </div>
       </div>
 
-      {showDialog && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
-          <div className="bg-white p-4 rounded-lg">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
-              Select Booking Time
-            </h2>
-            <div className="flex flex-col space-y-4">
-              <input
-                type="text"
-                placeholder="Start Time (24-hour format)"
-                value={startTime}
-                onChange={(e) => setStartTime(e.target.value)}
-                className="border border-gray-300 px-4 py-2 rounded-md"
-              />
-              <input
-                type="text"
-                placeholder="End Time (24-hour format)"
-                value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
-                className="border border-gray-300 px-4 py-2 rounded-md"
-              />
-              <button
-                type="button"
-                className="bg-green-500 hover:bg-green-400 text-white px-4 py-2 rounded-md"
-                onClick={handleConfirmBooking}
-              >
-                Confirm Booking
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </>
   );
 }

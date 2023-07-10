@@ -15,7 +15,7 @@ To get started with the application, follow the steps below:
 
 1. Clone the repository to your local machine using the following command:
    ```
-   git clone <https://github.com/ritik2358/DeCharge>
+   git clone https://github.com/ritik2358/DeCharge.git
    ```
 
 2. Navigate to the `Frontend` directory:
